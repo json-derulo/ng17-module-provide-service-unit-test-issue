@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { MyService } from "./my.service";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -25,5 +26,11 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ng17-service-module-testing');
+  });
+
+  it('should have the right attribute value from service', () => {
+    TestBed.createComponent(AppComponent);
+
+    expect(TestBed.inject(MyService).attribute).toBe('foo');
   });
 });
